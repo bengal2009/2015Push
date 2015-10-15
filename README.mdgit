@@ -1,0 +1,2 @@
+# 2015Push  initgit add README.mdgit commit -m "first commit"git remote add origin git@github.com:bengal2009/2015Push.gitgit push -u origin master
+# 2015Push  initgit add README.mdgit commit -m "first commit"git remote add origin git@github.com:bengal2009/2015Push.gitgit push -u origin master
