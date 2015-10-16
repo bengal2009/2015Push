@@ -17,7 +17,6 @@ import java.util.Map;
 public class BaiduPush {
 	
 	public final static String mUrl = "http://api.tuisong.baidu.com/rest/3.0/";
-    public String MURL="http://api.tuisong.baidu.com/rest/3.0/app/";// 基础url
 
     public final static String HTTP_METHOD_POST = "POST";
 	public final static String HTTP_METHOD_GET = "GET";
@@ -44,7 +43,6 @@ public class BaiduPush {
 		mHttpMethod = http_mehtod;
 		mSecretKey = secret_key;
 		RestApi.mApiKey = api_key;
-        Log.i("BaiduPush", "mUrl-3:"+"http://channel.api.duapp.com/rest/2.0/channel/");
 	}
 
 	/**
@@ -91,9 +89,9 @@ public class BaiduPush {
 			data.put(RestApi._TIMESTAMP,
                     Long.toString(System.currentTimeMillis() / 1000));
 			data.remove(RestApi._SIGN);
-
+            data.put(RestApi._DEVICE_TYPE, RestApi.DEVICE_TYPE_ANDROID);
 //			sb.append(mHttpMethod);
-			sb.append(mUrl);
+            sb.append(mUrl);
 			sb.append(channel);
 			for (Map.Entry<String, String> i : data.entrySet()) {
 				sb.append(i.getKey());
@@ -144,7 +142,7 @@ public class BaiduPush {
 		HttpRequest(mUrl + channel, sb.toString(), response);
 		Log.i("BaiduPush", "mUrl:" + mUrl + channel);
 		Log.i("BaiduPush",sb.toString());
-
+        Log.i("BaiduPush",response.toString());
 		return response.toString();
 	}
 
@@ -170,7 +168,9 @@ public class BaiduPush {
 			connection.setRequestMethod("POST");
 
 			connection.setRequestProperty("Content-Type",
-					"application/x-www-form-urlencoded");
+                    "application/x-www-form-urlencoded");
+            connection.setRequestProperty("User-Agent",
+                    "BCCS_SDK/3.0");
 			connection
 					.setRequestProperty("Content-Length", "" + query.length());
 			connection.setRequestProperty("charset", "utf-8");
@@ -203,6 +203,7 @@ public class BaiduPush {
 		} catch (Exception e) {
 			e.printStackTrace();
 			Log.e("HttpRequest", "HttpRequest Exception:" + e.getMessage());
+            out.append("HttpRequest Exception:" + e.getMessage());
 			out.append(SEND_MSG_ERROR);//瘨��憭梯揖嚗���霂荔��扯���
 		}
 
