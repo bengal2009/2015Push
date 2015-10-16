@@ -44,7 +44,7 @@ public class RestApi extends TreeMap<String, String> {
 	public final static String METHOD_SET_TAG = "set_tag";
 	public final static String METHOD_FETCH_TAG = "fetch_tag";
 	public final static String METHOD_DELETE_TAG = "delete_tag";
-	public final static String METHOD_QUERY_USER_TAG = "query_user_tags";
+	public final static String METHOD_QUERY_USER_TAG = "query_tags";
 
 	public final static String METHOD_FETCH_MESSAGE = "fetch_msg";
 	public final static String METHOD_FETCH_MSG_COUNT = "fetch_msgcount";
@@ -68,7 +68,7 @@ public class RestApi extends TreeMap<String, String> {
 	public static String mApiKey = MainActivity.APP_KEY;
 
 	public RestApi(String method) {
-		put(_METHOD, method);
+//		put(_METHOD, method);
 		put(_APIKEY, mApiKey);
 	}
 

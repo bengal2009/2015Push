@@ -16,9 +16,10 @@ import java.util.Map;
 
 public class BaiduPush {
 	
-	public final static String mUrl = "api.tuisong.baidu.com/rest/3.0/push/";// �箇�url
+	public final static String mUrl = "http://api.tuisong.baidu.com/rest/3.0/";
+    public String MURL="http://api.tuisong.baidu.com/rest/3.0/app/";// 基础url
 
-	public final static String HTTP_METHOD_POST = "POST";
+    public final static String HTTP_METHOD_POST = "POST";
 	public final static String HTTP_METHOD_GET = "GET";
 
 	public static final String SEND_MSG_ERROR = "send_msg_error";
@@ -43,6 +44,7 @@ public class BaiduPush {
 		mHttpMethod = http_mehtod;
 		mSecretKey = secret_key;
 		RestApi.mApiKey = api_key;
+        Log.i("BaiduPush", "mUrl-3:"+"http://channel.api.duapp.com/rest/2.0/channel/");
 	}
 
 	/**
@@ -83,14 +85,14 @@ public class BaiduPush {
 
 		String channel = data.remove(RestApi._CHANNEL_ID);
 		if (channel == null)
-			channel = "channel";
-
+			channel = "app/query_tags";
+//        Log.i("BaiduPush", "mUrl:"+mUrl + channel);
 		try {
 			data.put(RestApi._TIMESTAMP,
-					Long.toString(System.currentTimeMillis() / 1000));
+                    Long.toString(System.currentTimeMillis() / 1000));
 			data.remove(RestApi._SIGN);
 
-			sb.append(mHttpMethod);
+//			sb.append(mHttpMethod);
 			sb.append(mUrl);
 			sb.append(channel);
 			for (Map.Entry<String, String> i : data.entrySet()) {
@@ -140,6 +142,9 @@ public class BaiduPush {
 
 		StringBuilder response = new StringBuilder();
 		HttpRequest(mUrl + channel, sb.toString(), response);
+		Log.i("BaiduPush", "mUrl:" + mUrl + channel);
+		Log.i("BaiduPush",sb.toString());
+
 		return response.toString();
 	}
 
@@ -159,6 +164,8 @@ public class BaiduPush {
 
 		try {
 			urlobj = new URL(url);
+			Log.i("BaiduPush","URL:"+url);
+            Log.i("BaiduPush","Query:"+query);
 			connection = (HttpURLConnection) urlobj.openConnection();
 			connection.setRequestMethod("POST");
 
@@ -286,8 +293,10 @@ public class BaiduPush {
 	 * @return
 	 */
 	public String QueryUserTag(String userid) {
+//        Log.i("BaiduPush", "mUrl-1:"+mUrl );
 		RestApi ra = new RestApi(RestApi.METHOD_QUERY_USER_TAG);
-		ra.put(RestApi._USER_ID, userid);
+//		ra.put(RestApi._USER_ID, userid);
+//        ra.put(RestApi.METHOD_QUERY_USER_TAG, "query_tags");
 		return PostHttpRequest(ra);
 	}
 
