@@ -2,3 +2,16 @@ curl -H "Content-Type:application/x-www-form-urlencoded;charset=utf-8;Content-Le
 --user-agent "BCCS_SDK/3.0" \
 -d "apikey=mzaavB1EGEG8qGqeE5FhrLFy&device_type=3&sign=8788053de0da9ebd8d4e5d33fa6e7988&timestamp=1445413274" \
 -X POST http://api.tuisong.baidu.com/rest/3.0/app/query_tags
+
+
+ new Thread(new Runnable(){
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                if (mBaiduPushServer == null)
+                    mBaiduPushServer = new BaiduPush(BaiduPush.HTTP_METHOD_POST,
+                            MainActivity.SECRIT_KEY, MainActivity.APP_KEY);
+                Log.i("App", MainActivity.SECRIT_KEY);
+                Log.i("App", mBaiduPushServer.QueryUserTag("11111"));
+            }
+        }).start();

@@ -22,8 +22,8 @@ public class BaiduPush {
 
 	public static final String SEND_MSG_ERROR = "send_msg_error";
 	
-	private final static int HTTP_CONNECT_TIMEOUT = 10000;// 餈頞�園嚗�0s
-	private final static int HTTP_READ_TIMEOUT = 10000;// 霂餅��航��嗆�湛�10s
+	private final static int HTTP_CONNECT_TIMEOUT = 20000;// 餈頞�園嚗�0s
+	private final static int HTTP_READ_TIMEOUT = 20000;// 霂餅��航��嗆�湛�10s
 
 	public String mHttpMethod;// 霂瑟��孵�嚗ost or Get
 	public String mSecretKey;// 摰key

@@ -15,17 +15,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ((Button) findViewById(R.id.testa)).setOnClickListener(this);
-        new Thread(new Runnable(){
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
+
                 if (mBaiduPushServer == null)
                     mBaiduPushServer = new BaiduPush(BaiduPush.HTTP_METHOD_POST,
                             MainActivity.SECRIT_KEY, MainActivity.APP_KEY);
                 Log.i("App", MainActivity.SECRIT_KEY);
                 Log.i("App", mBaiduPushServer.QueryUserTag("11111"));
-            }
-        }).start();
 
 
     }
