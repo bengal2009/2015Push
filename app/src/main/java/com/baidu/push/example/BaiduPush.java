@@ -89,7 +89,7 @@ public class BaiduPush {
                     Long.toString(System.currentTimeMillis() / 1000));
 			data.remove(RestApi._SIGN);
             data.put(RestApi._DEVICE_TYPE, RestApi.DEVICE_TYPE_ANDROID);
-//			sb.append(mHttpMethod);
+			sb.append(mHttpMethod);
             sb.append(mUrl);
 			sb.append(channel);
 			for (Map.Entry<String, String> i : data.entrySet()) {
@@ -185,6 +185,7 @@ public class BaiduPush {
 			// Send request
 			DataOutputStream wr = new DataOutputStream(
 					connection.getOutputStream());
+            Log.i("BaiduPush","QueryString:"+query.toString());
 			wr.writeBytes(query.toString());
 			wr.flush();
 			wr.close();
