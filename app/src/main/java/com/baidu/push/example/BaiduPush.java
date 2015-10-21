@@ -15,7 +15,6 @@ import java.util.Map;
 
 
 public class BaiduPush {
-	
 	public final static String mUrl = "http://api.tuisong.baidu.com/rest/3.0/";
 
     public final static String HTTP_METHOD_POST = "POST";
@@ -108,6 +107,7 @@ public class BaiduPush {
 			md.reset();
 			// md.update( URLEncoder.encode(sb.toString(), "utf-8").getBytes()
 			// );
+			Log.i("BaiduPush",sb.toString());
 			md.update(urlencode(sb.toString()).getBytes());
 			byte[] md5 = md.digest();
 
@@ -190,6 +190,7 @@ public class BaiduPush {
 			wr.close();
 
 			// Get Response
+			Log.i("BaiduPush","Get Response");
 			InputStream is = connection.getInputStream();
 			BufferedReader rd = new BufferedReader(new InputStreamReader(is));
 			String line;
