@@ -1,5 +1,4 @@
-curl -H "Content-Type:application/x-www-form-urlencoded;charset=utf-8; \
-User-Agent: BCCS_SDK/3.0\
-Content-Length:104"  \
+curl -H "Content-Type:application/x-www-form-urlencoded;charset=utf-8;Content-Length:104"  \
+--user-agent "BCCS_SDK/3.0" \
 -d "apikey=mzaavB1EGEG8qGqeE5FhrLFy&device_type=3&sign=8788053de0da9ebd8d4e5d33fa6e7988&timestamp=1445413274" \
 -X POST http://api.tuisong.baidu.com/rest/3.0/app/query_tags
