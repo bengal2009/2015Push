@@ -190,9 +190,9 @@ public class BaiduPush {
 			wr.writeBytes(query.toString());
 			wr.flush();
 			wr.close();
-
-			// Get Response
-			Log.i("BaiduPush","Get Response");
+            int responseCode = connection.getResponseCode();
+            // Get Response
+			Log.i("BaiduPush", "Get Response");
 			InputStream is = connection.getInputStream();
 			BufferedReader rd = new BufferedReader(new InputStreamReader(is));
 			String line;
