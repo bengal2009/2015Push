@@ -14,6 +14,7 @@ public class RestApi extends TreeMap<String, String> {
 	private static final long serialVersionUID = 1L;
 	public final static String _METHOD = "method";
 	public final static String _APIKEY = "apikey";
+	public final static String _SECRETKEY = "secret_key";
 	public final static String _TIMESTAMP = "timestamp";
 	public final static String _SIGN = "sign";
 	public final static String _EXPIRES = "expires";
@@ -26,7 +27,7 @@ public class RestApi extends TreeMap<String, String> {
 	public final static String _DEVICE_TYPE = "device_type";
 
 	public final static String _MESSAGE_TYPE = "message_type";
-	public final static String _MESSAGES = "messages";
+	public final static String _MESSAGES = "msg";
 	public final static String _MESSAGE_KEYS = "msg_keys";
 	public final static String _MESSAGE_EXPIRES = "message_expires";
 	public final static String _MESSAGE_IDS = "msg_ids";
@@ -68,7 +69,7 @@ public class RestApi extends TreeMap<String, String> {
 	public static String mApiKey = MainActivity.APP_KEY;
 
 	public RestApi(String method) {
-		put(_METHOD, method);
+//		put(_METHOD, method);
 		put(_APIKEY, mApiKey);
 	}
 

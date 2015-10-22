@@ -85,6 +85,7 @@ public class BaiduPush {
 			channel =data._CHANNEL;
 //        Log.i("BaiduPush", "mUrl:"+mUrl + channel);
 		try {
+            data.put(RestApi._SECRETKEY,mSecretKey);
 			data.put(RestApi._TIMESTAMP,
                     Long.toString(System.currentTimeMillis() / 1000));
 			data.remove(RestApi._SIGN);
@@ -310,7 +311,7 @@ public class BaiduPush {
         Log.i("BaiduPush",  message );
         RestApi ra = new RestApi(RestApi.METHOD_QUERY_USER_TAG);
         ra.put(RestApi._CHANNEL, "push/all");
-        ra.put(RestApi._MESSAGE_TYPE, RestApi.MESSAGE_TYPE_MESSAGE);
+        ra.put(RestApi._MESSAGE_TYPE, RestApi.MESSAGE_TYPE_NOTIFY);
         ra.put(RestApi._MESSAGES, message);
         return PostHttpRequest(ra);
     }

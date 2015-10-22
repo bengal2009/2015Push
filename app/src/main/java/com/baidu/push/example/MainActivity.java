@@ -24,7 +24,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     mBaiduPushServer = new BaiduPush(BaiduPush.HTTP_METHOD_POST,
                             MainActivity.SECRIT_KEY, MainActivity.APP_KEY);
 //                Log.i("App", mGson.toJson(message));
-                Log.i("App", mBaiduPushServer.PushtoAll(mGson.toJson(message)));
+                Log.i("App", mBaiduPushServer.PushtoAll("{111}"));
 
 
     }
