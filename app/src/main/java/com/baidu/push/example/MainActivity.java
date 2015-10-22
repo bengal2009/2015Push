@@ -13,6 +13,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public static final String SECRIT_KEY = "97177c7744320dd55571457fc122a418";
     private BaiduPush mBaiduPushServer;
     Gson mGson;
+    String s1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +24,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 if (mBaiduPushServer == null)
                     mBaiduPushServer = new BaiduPush(BaiduPush.HTTP_METHOD_POST,
                             MainActivity.SECRIT_KEY, MainActivity.APP_KEY);
-//                Log.i("App", mGson.toJson(message));
-                Log.i("App", mBaiduPushServer.PushtoAll("{111}"));
+                Log.i("App", mBaiduPushServer.PushtoAll("{\"title\":\"hello\",\"description\":\"hello world\"}"));
+
+//        Log.i("App", mBaiduPushServer.QueryUserTag("111"));
 
 
     }

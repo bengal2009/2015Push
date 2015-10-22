@@ -26,7 +26,7 @@ public class RestApi extends TreeMap<String, String> {
 	public final static String _PUSH_TYPE = "push_type";
 	public final static String _DEVICE_TYPE = "device_type";
 
-	public final static String _MESSAGE_TYPE = "message_type";
+	public final static String _MESSAGE_TYPE = "msg_type";
 	public final static String _MESSAGES = "msg";
 	public final static String _MESSAGE_KEYS = "msg_keys";
 	public final static String _MESSAGE_EXPIRES = "message_expires";

@@ -85,9 +85,7 @@ public class Message implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Message [user_id=" + user_id + ", channel_id=" + channel_id
-				+  ", time_samp="
-				+ time_samp + ", message=" + message+ ", tag=" + tag + "]";
+		return "Message [message=" + message+ "]";
 	}
 
 }
