@@ -21,7 +21,7 @@ public class RestApi extends TreeMap<String, String> {
 
 	public final static String _USER_ID = "user_id";
 	public final static String _CHANNEL_ID = "channel_id";
-
+	public final static String _CHANNEL = "channel_id";
 	public final static String _PUSH_TYPE = "push_type";
 	public final static String _DEVICE_TYPE = "device_type";
 
@@ -68,7 +68,7 @@ public class RestApi extends TreeMap<String, String> {
 	public static String mApiKey = MainActivity.APP_KEY;
 
 	public RestApi(String method) {
-//		put(_METHOD, method);
+		put(_METHOD, method);
 		put(_APIKEY, mApiKey);
 	}
 

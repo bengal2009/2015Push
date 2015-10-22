@@ -82,7 +82,7 @@ public class BaiduPush {
 
 		String channel = data.remove(RestApi._CHANNEL_ID);
 		if (channel == null)
-			channel = "app/query_tags";
+			channel =data._CHANNEL;
 //        Log.i("BaiduPush", "mUrl:"+mUrl + channel);
 		try {
 			data.put(RestApi._TIMESTAMP,
@@ -298,11 +298,22 @@ public class BaiduPush {
 	public String QueryUserTag(String userid) {
 //        Log.i("BaiduPush", "mUrl-1:"+mUrl );
 		RestApi ra = new RestApi(RestApi.METHOD_QUERY_USER_TAG);
+        ra.put(RestApi._CHANNEL, "app/query_tags");
 //		ra.put(RestApi._USER_ID, userid);
 //        ra.put(RestApi.METHOD_QUERY_USER_TAG, "query_tags");
 		return PostHttpRequest(ra);
 	}
-
+    /*
+    Benny Test
+     */
+    public String PushtoAll(String message) {
+        Log.i("BaiduPush",  message );
+        RestApi ra = new RestApi(RestApi.METHOD_QUERY_USER_TAG);
+        ra.put(RestApi._CHANNEL, "push/all");
+        ra.put(RestApi._MESSAGE_TYPE, RestApi.MESSAGE_TYPE_MESSAGE);
+        ra.put(RestApi._MESSAGES, message);
+        return PostHttpRequest(ra);
+    }
 	/**
 	 * �寞channel_id�亥砭霈曉�蝐餃�嚗�1嚗�閫霈曉�嚗�2嚗c霈曉�嚗�3嚗ndriod霈曉�嚗�4嚗OS霈曉�嚗�5嚗p霈曉�嚗�	 *
 	 * @param channelid
