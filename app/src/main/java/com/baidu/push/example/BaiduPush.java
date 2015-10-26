@@ -179,7 +179,6 @@ public class BaiduPush {
 			connection.setUseCaches(false);
 			connection.setDoInput(true);
 			connection.setDoOutput(true);
-
 			connection.setConnectTimeout(HTTP_CONNECT_TIMEOUT);
 			connection.setReadTimeout(HTTP_READ_TIMEOUT);
 
@@ -191,18 +190,21 @@ public class BaiduPush {
 			wr.flush();
 			wr.close();
             int responseCode = connection.getResponseCode();
-            // Get Response
-			Log.i("BaiduPush", "Get Response");
-			InputStream is = connection.getInputStream();
-			BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-			String line;
+			if(responseCode == HttpURLConnection.HTTP_OK) {
 
-			while ((line = rd.readLine()) != null) {
-				out.append(line);
-				out.append('\r');
+				// Get Response
+				Log.i("BaiduPush", "Get Response");
+				InputStream is = connection.getInputStream();
+				BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+				String line;
+
+				while ((line = rd.readLine()) != null) {
+					out.append(line);
+					out.append('\r');
+				}
+                Log.i("BaiduPush", out.toString());
+				rd.close();
 			}
-			rd.close();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			Log.e("HttpRequest", "HttpRequest Exception:" + e.getMessage());
@@ -296,7 +298,7 @@ public class BaiduPush {
 	 * @param userid
 	 * @return
 	 */
-	public String QueryUserTag(String userid) {
+	public String QueryUserTag() {
 //        Log.i("BaiduPush", "mUrl-1:"+mUrl );
 		RestApi ra = new RestApi(RestApi.METHOD_QUERY_USER_TAG);
         ra.put(RestApi._CHANNEL, "app/query_tags");
