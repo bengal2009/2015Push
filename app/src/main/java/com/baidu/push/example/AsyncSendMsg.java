@@ -14,23 +14,24 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class PostMT extends Activity {
+public class AsyncSendMsg extends Activity {
 String TagStr="PostMT";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_mt);
-        Button imageDownloaderBtn = (Button) findViewById(R.id.PMS);
+        setContentView(R.layout.sendtees);
+        Button imageDownloaderBtn = (Button) findViewById(R.id.PMS1);
         imageDownloaderBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
 //                new ImageDownloader().execute(downloadUrl);
-                String t1="http://api.tuisong.baidu.com/rest/3.0/app/query_tags";
+                String t1="http://api.tuisong.baidu.com/rest/3.0/push/all";
                 String t2="apikey=mzaavB1EGEG8qGqeE5FhrLFy&device_type=3&" +
-                        "secret_key=97177c7744320dd55571457fc122a418&" +
-                        "sign=7dd37c1fae9172194d44636325868dbe&timestamp=1445840002";
+                        "msg=%7B%22title%22%3A%22hello%22%2C%22description%22%3A%22hello+world%22%7D&" +
+                        "msg_type=1&secret_key=97177c7744320dd55571457fc122a418&" +
+                        "sign=2ed148fe9f3f4195b75bfbb5bdcf6075&timestamp=1445838906";
                 new PostTest(t1,t2).execute();
                 /*new PostTest("http://192.168.91.57/cacti/index.php",
                         "login_username=admin&login_password=1234").execute();*/
