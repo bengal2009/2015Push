@@ -169,12 +169,11 @@ public class BaiduPush {
 			connection.setRequestMethod("POST");
 
 			connection.setRequestProperty("Content-Type",
-                    "application/x-www-form-urlencoded");
+                    "application/x-www-form-urlencoded;charset=utf-8");
             connection.setRequestProperty("User-Agent",
-                    "BCCS_SDK/3.0");
+					"BCCS_SDK/3.0");
 			connection
 					.setRequestProperty("Content-Length", "" + query.length());
-			connection.setRequestProperty("charset", "utf-8");
 
 			connection.setUseCaches(false);
 			connection.setDoInput(true);

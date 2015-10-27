@@ -45,7 +45,18 @@ public class AsyncQueryTag {
         @Override
         protected String doInBackground(Void... message) {
             String result = "";
-            result = mBaiduPush.QueryUserTag();
+          /*  String msg = String
+                    .format("{\"title\":\"%s\",\"description\":\"%s\"," +
+                                    "\"notification_builder_id\":0,\"notification_basic_style\":7," +
+                                    "\"open_type\":2,\"custom_content\":{\"test\":\"test\"}}",
+                            "title", mBaiduPush.jsonencode("1234"));*/
+            String msg = String
+                    .format("{\"title\":\"%s\",\"description\":\"%s\"}",
+                            "title", mBaiduPush.jsonencode("1234"));
+
+            Log.i("AsyncQuery",mBaiduPush.jsonencode(msg) );
+            result = mBaiduPush.PushtoAll(msg);
+//            result = mBaiduPush.QueryUserTag();
 //				result = mBaiduPush.PushNotifyAll("Benny",mMessage);
             return result;
         }
