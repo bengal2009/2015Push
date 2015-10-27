@@ -4,6 +4,9 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by blin on 2015/10/22.
  */
@@ -50,9 +53,16 @@ public class AsyncQueryTag {
                                     "\"notification_builder_id\":0,\"notification_basic_style\":7," +
                                     "\"open_type\":2,\"custom_content\":{\"test\":\"test\"}}",
                             "title", mBaiduPush.jsonencode("1234"));*/
+            /*String msg = String
+                    .format("{\"title\":\"%s\",\"description\":\"%s\",\"url\":" +
+                                    "\"http://developer.baidu.com\"," +
+                                    "\"open_type\":1}",
+                            "title", mBaiduPush.jsonencode("1234"));
+            */
             String msg = String
                     .format("{\"title\":\"%s\",\"description\":\"%s\"}",
-                            "title", mBaiduPush.jsonencode("1234"));
+                           "title", mBaiduPush.jsonencode("测试!"));
+
 
             Log.i("AsyncQuery",mBaiduPush.jsonencode(msg) );
             result = mBaiduPush.PushtoAll(msg);
@@ -66,6 +76,19 @@ public class AsyncQueryTag {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
             Log.e("SendMsgAsyncTask", "send msg result:" + result);
+            JSONObject customJson = null;
+            try {
+                customJson = new JSONObject(result);
+                String myvalue = null;
+                if (!customJson.isNull("request_id")) {
+                    myvalue = customJson.getString("request_id");
+                    Log.i("MyValue",myvalue );
+                }
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
             if (result.contains(BaiduPush.SEND_MSG_ERROR)) {// 如果消息发送失败，则100ms后重发
                 mHandler.postDelayed(reSend, 100);
             }
